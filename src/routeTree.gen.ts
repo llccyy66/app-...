@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArenaIndexRouteImport } from './routes/arena.index'
+import { Route as ArenaBattleRouteImport } from './routes/arena.battle'
+import { Route as DrillVersionIdRouteImport } from './routes/drill.$versionId'
+import { Route as EditVersionIdRouteImport } from './routes/edit.$versionId'
+import { Route as MeIndexRouteImport } from './routes/me.index'
+import { Route as MeRecordingsRouteImport } from './routes/me.recordings'
+import { Route as PiecePieceIdRouteImport } from './routes/piece.$pieceId'
+import { Route as TheoryIndexRouteImport } from './routes/theory.index'
+import { Route as TheoryLessonIdRouteImport } from './routes/theory.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArenaIndexRoute = ArenaIndexRouteImport.update({
+  id: '/arena/',
+  path: '/arena/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArenaBattleRoute = ArenaBattleRouteImport.update({
+  id: '/arena/battle',
+  path: '/arena/battle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DrillVersionIdRoute = DrillVersionIdRouteImport.update({
+  id: '/drill/$versionId',
+  path: '/drill/$versionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditVersionIdRoute = EditVersionIdRouteImport.update({
+  id: '/edit/$versionId',
+  path: '/edit/$versionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeIndexRoute = MeIndexRouteImport.update({
+  id: '/me/',
+  path: '/me/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeRecordingsRoute = MeRecordingsRouteImport.update({
+  id: '/me/recordings',
+  path: '/me/recordings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PiecePieceIdRoute = PiecePieceIdRouteImport.update({
+  id: '/piece/$pieceId',
+  path: '/piece/$pieceId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheoryIndexRoute = TheoryIndexRouteImport.update({
+  id: '/theory/',
+  path: '/theory/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheoryLessonIdRoute = TheoryLessonIdRouteImport.update({
+  id: '/theory/$lessonId',
+  path: '/theory/$lessonId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/arena/battle': typeof ArenaBattleRoute
+  '/drill/$versionId': typeof DrillVersionIdRoute
+  '/edit/$versionId': typeof EditVersionIdRoute
+  '/me/recordings': typeof MeRecordingsRoute
+  '/piece/$pieceId': typeof PiecePieceIdRoute
+  '/theory/$lessonId': typeof TheoryLessonIdRoute
+  '/arena/': typeof ArenaIndexRoute
+  '/me/': typeof MeIndexRoute
+  '/theory/': typeof TheoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/arena/battle': typeof ArenaBattleRoute
+  '/drill/$versionId': typeof DrillVersionIdRoute
+  '/edit/$versionId': typeof EditVersionIdRoute
+  '/me/recordings': typeof MeRecordingsRoute
+  '/piece/$pieceId': typeof PiecePieceIdRoute
+  '/theory/$lessonId': typeof TheoryLessonIdRoute
+  '/arena': typeof ArenaIndexRoute
+  '/me': typeof MeIndexRoute
+  '/theory': typeof TheoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/arena/battle': typeof ArenaBattleRoute
+  '/drill/$versionId': typeof DrillVersionIdRoute
+  '/edit/$versionId': typeof EditVersionIdRoute
+  '/me/recordings': typeof MeRecordingsRoute
+  '/piece/$pieceId': typeof PiecePieceIdRoute
+  '/theory/$lessonId': typeof TheoryLessonIdRoute
+  '/arena/': typeof ArenaIndexRoute
+  '/me/': typeof MeIndexRoute
+  '/theory/': typeof TheoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/arena/battle'
+    | '/drill/$versionId'
+    | '/edit/$versionId'
+    | '/me/recordings'
+    | '/piece/$pieceId'
+    | '/theory/$lessonId'
+    | '/arena/'
+    | '/me/'
+    | '/theory/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/arena/battle'
+    | '/drill/$versionId'
+    | '/edit/$versionId'
+    | '/me/recordings'
+    | '/piece/$pieceId'
+    | '/theory/$lessonId'
+    | '/arena'
+    | '/me'
+    | '/theory'
+  id:
+    | '__root__'
+    | '/'
+    | '/arena/battle'
+    | '/drill/$versionId'
+    | '/edit/$versionId'
+    | '/me/recordings'
+    | '/piece/$pieceId'
+    | '/theory/$lessonId'
+    | '/arena/'
+    | '/me/'
+    | '/theory/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArenaBattleRoute: typeof ArenaBattleRoute
+  DrillVersionIdRoute: typeof DrillVersionIdRoute
+  EditVersionIdRoute: typeof EditVersionIdRoute
+  MeRecordingsRoute: typeof MeRecordingsRoute
+  PiecePieceIdRoute: typeof PiecePieceIdRoute
+  TheoryLessonIdRoute: typeof TheoryLessonIdRoute
+  ArenaIndexRoute: typeof ArenaIndexRoute
+  MeIndexRoute: typeof MeIndexRoute
+  TheoryIndexRoute: typeof TheoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/arena/': {
+      id: '/arena/'
+      path: '/arena'
+      fullPath: '/arena/'
+      preLoaderRoute: typeof ArenaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arena/battle': {
+      id: '/arena/battle'
+      path: '/arena/battle'
+      fullPath: '/arena/battle'
+      preLoaderRoute: typeof ArenaBattleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drill/$versionId': {
+      id: '/drill/$versionId'
+      path: '/drill/$versionId'
+      fullPath: '/drill/$versionId'
+      preLoaderRoute: typeof DrillVersionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edit/$versionId': {
+      id: '/edit/$versionId'
+      path: '/edit/$versionId'
+      fullPath: '/edit/$versionId'
+      preLoaderRoute: typeof EditVersionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/me/': {
+      id: '/me/'
+      path: '/me'
+      fullPath: '/me/'
+      preLoaderRoute: typeof MeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/me/recordings': {
+      id: '/me/recordings'
+      path: '/me/recordings'
+      fullPath: '/me/recordings'
+      preLoaderRoute: typeof MeRecordingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/piece/$pieceId': {
+      id: '/piece/$pieceId'
+      path: '/piece/$pieceId'
+      fullPath: '/piece/$pieceId'
+      preLoaderRoute: typeof PiecePieceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/theory/': {
+      id: '/theory/'
+      path: '/theory'
+      fullPath: '/theory/'
+      preLoaderRoute: typeof TheoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/theory/$lessonId': {
+      id: '/theory/$lessonId'
+      path: '/theory/$lessonId'
+      fullPath: '/theory/$lessonId'
+      preLoaderRoute: typeof TheoryLessonIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArenaBattleRoute: ArenaBattleRoute,
+  DrillVersionIdRoute: DrillVersionIdRoute,
+  EditVersionIdRoute: EditVersionIdRoute,
+  MeRecordingsRoute: MeRecordingsRoute,
+  PiecePieceIdRoute: PiecePieceIdRoute,
+  TheoryLessonIdRoute: TheoryLessonIdRoute,
+  ArenaIndexRoute: ArenaIndexRoute,
+  MeIndexRoute: MeIndexRoute,
+  TheoryIndexRoute: TheoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
